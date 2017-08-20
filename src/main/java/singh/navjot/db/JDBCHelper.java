@@ -52,11 +52,12 @@ public class JDBCHelper
 			
 			
 			//3. Create SQL Statement
-			String sql = "insert into user_table values(null, ?, ?, ?)";
+			String sql = "insert into user_table values(null, ?, ?, ?,?)";
 			pStmt = con.prepareStatement(sql);
 			pStmt.setString(1, user.getName());
 			pStmt.setString(2, user.getEmail());
 			pStmt.setString(3, user.getPassword());
+			pStmt.setString(4, "0");
 			
 			//4. Execute SQL Statement
 			i = pStmt.executeUpdate();
@@ -68,6 +69,7 @@ public class JDBCHelper
 			
 		} catch (Exception e) {
 			System.out.println("Some Exception: "+e);
+			e.printStackTrace();
 		}
 		
 		return i;
@@ -95,6 +97,29 @@ public class JDBCHelper
 			e.printStackTrace();
 		}
 		return existingemail;
+	}
+	
+	public int getpoints(String email)
+	{
+		int points=-1;
+		try {
+			
+			String sql = "select POINTS from user_table where email=?";
+			
+			pStmt = con.prepareStatement(sql);
+			pStmt.setString(1, email);
+			
+			ResultSet rs = pStmt.executeQuery();
+			boolean userexist = rs.next();
+			if(userexist)
+			{ System.out.print("exist");
+				points = Integer.valueOf(rs.getString(1));
+			}
+			
+		}catch (Exception e) {
+			System.out.println("Some Exception: "+e);	e.printStackTrace();	}
+		
+		return points;
 	}
 	
 	public HashMap loginUser(User user)

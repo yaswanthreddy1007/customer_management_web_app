@@ -9,15 +9,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome Admin</title>
+<jsp:include page="css.jsp"></jsp:include>
 </head>
 <body>
 	<% 	String name = (String)session.getAttribute("keyloginname");%>
-	<h1>Welcome <% out.print(name); %></h1>
-	<br/>
-	<br/>
-	
-	Users: 
-	<br/>
+
 	<%
 	ArrayList<String> userslist=new ArrayList<String>();
 	JDBCHelper helper = new JDBCHelper();
@@ -25,9 +21,12 @@
 	userslist = helper.retrieveUsers();
 	helper.closeConnection();
 	%>
-	
+
+<div class="container">	
+	<h1>Welcome <%=name %></h1>
 	<form id="bill_form" action="bill.jsp">
 		<input id="frowcount" name="frowcount" type="number" hidden />
+		<h3>Users:</h3>
 			<select id="fuser" name="fuser">
 				<option value="select users">select user</option>
 				<%
@@ -48,10 +47,16 @@
 				<tr id="emptyrow"></tr>
 			</table>
 			<br/>
-			<input type="button" onclick="addrow()" value="ADD" />
-			<input type="submit" value="Generate Bill" />
+			<input class="btn btn-primary" type="button" onclick="addrow()" value="ADD" />
+			<input class="btn btn-primary" type="submit" value="Generate Bill" />
 	</form>
-	
+	<br/><br/><br/>
+	<form action="logout" method="post">
+			<input type="submit" value="Logout" class="btn btn-primary"/>
+		</form>
+</div>
+
 	<script type="text/javascript" src="js/admin.js"></script>
+	<jsp:include page="js.jsp"></jsp:include>
 </body>
 </html>

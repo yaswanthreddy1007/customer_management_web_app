@@ -10,6 +10,12 @@
   	<description></description>
   	<servlet-class>itext_practise.itextservlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>logoutServlet</servlet-name>
+  	<display-name>logoutServlet</display-name>
+  	<description></description>
+  	<servlet-class>singh.navjot.controller.logoutServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>itextservlet</servlet-name>
   	<url-pattern>/itextservlet</url-pattern>
@@ -17,5 +23,13 @@
   <servlet-mapping>
   	<servlet-name>itextservlet</servlet-name>
   	<url-pattern>/itext</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>logoutServlet</servlet-name>
+  	<url-pattern>/logoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>logoutServlet</servlet-name>
+  	<url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>

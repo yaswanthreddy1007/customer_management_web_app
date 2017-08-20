@@ -18,14 +18,7 @@ import singh.navjot.model.User;
 @WebFilter("/register")
 public class registerFilter implements Filter {
 
-    public registerFilter() {
-        
-    }
-
-	
-	public void destroy() {
-	
-	}
+	RequestDispatcher rd;
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException 
 	{
@@ -35,14 +28,31 @@ public class registerFilter implements Filter {
 //		out.print(" <link rel='stylesheet' type='text/css' href='"+  request.getServletContext().getRealPath("/")+"css\\custom.css' />");
 //out.print(request.getServletContext().getRealPath("/")+"css/custom.css'>");
 		
-		String name = request.getParameter("fname").trim();
-		String email = request.getParameter("femail").trim();
-		String password = request.getParameter("fpassword").trim();
+		String name = request.getParameter("fnameregister").trim();
+		String email = request.getParameter("femailregister").trim();
+		String password = request.getParameter("fpasswordregister").trim();
 		
 		if(name.isEmpty() || email.isEmpty() || password.isEmpty())
 		{
-			out.println("<div class='red'>Please fill all the details</div>");
-			RequestDispatcher rd=request.getRequestDispatcher("register.html");  
+			rd=request.getRequestDispatcher("css.jsp");  
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("navbar.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("validation.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("register.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("about.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("login.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("js.jsp");
 		    rd.include(request, response);
 		} 
 		else {
@@ -56,8 +66,25 @@ public class registerFilter implements Filter {
 			
 			if(existingemail.length()>0)
 			{
-				out.print(email+" already exist <br/><br/>");
-				RequestDispatcher rd=request.getRequestDispatcher("register.html");  
+				rd=request.getRequestDispatcher("css.jsp");  
+			    rd.include(request, response);
+			    
+			    rd=request.getRequestDispatcher("navbar.jsp");
+			    rd.include(request, response);
+			    
+			    rd=request.getRequestDispatcher("validation.jsp");
+			    rd.include(request, response);
+			    
+			    rd=request.getRequestDispatcher("register.jsp");
+			    rd.include(request, response);
+			    
+			    rd=request.getRequestDispatcher("about.jsp");
+			    rd.include(request, response);
+			    
+			    rd=request.getRequestDispatcher("login.jsp");
+			    rd.include(request, response);
+			    
+			    rd=request.getRequestDispatcher("js.jsp");
 			    rd.include(request, response);
 				
 			}

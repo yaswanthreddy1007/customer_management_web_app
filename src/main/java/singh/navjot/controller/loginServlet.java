@@ -19,13 +19,15 @@ import singh.navjot.model.User;
 @WebServlet({ "/loginServlet", "/login" })
 public class loginServlet extends HttpServlet {
 	
+	RequestDispatcher rd;
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		String email = request.getParameter("femail");
-		String password = request.getParameter("fpassword");
+		String email = request.getParameter("femaillogin");
+		String password = request.getParameter("fpasswordlogin");
 		
 		User user = new User();
 		user.setEmail(email);
@@ -48,19 +50,36 @@ public class loginServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("keyloginname", loginname);
-			RequestDispatcher rd = request.getRequestDispatcher("welcome_admin.jsp");
-			rd.forward(request, response);
-//			response.sendRedirect("http://localhost:8080/Customer_management_system/welcome_admin.jsp");
+			response.sendRedirect("http://localhost:8080/customer_management_system/welcome_admin.jsp");
 		}
 		
 		else if(logincheck.equals("true"))
 		{
-			out.print("Login Success  <br/>");
-			out.print("Welcome "+loginname);
+			HttpSession session = request.getSession();
+			session.setAttribute("keyloginname", loginname);
+			session.setAttribute("keyloginemail", loginemail);
+			response.sendRedirect("http://localhost:8080/customer_management_system/welcome.jsp");
 		}
 		else {
-			out.println("<b>Login is Failure..</b>");
-			RequestDispatcher rd=request.getRequestDispatcher("login.html");  
+			rd=request.getRequestDispatcher("css.jsp");  
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("navbar.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("loginerror.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("login.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("about.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("register.jsp");
+		    rd.include(request, response);
+		    
+		    rd=request.getRequestDispatcher("js.jsp");
 		    rd.include(request, response);
 		}
 		helper.closeConnection();
