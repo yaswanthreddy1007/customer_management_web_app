@@ -75,6 +75,36 @@ public class JDBCHelper
 		return i;
 	}
 	
+	public void incrementpoints(String email)
+	{
+		int i=0;
+		int points = getpoints(email);
+		
+		points = points + 2;
+		
+	
+		try {
+			
+			String sql = "update user_table set POINTS=? where EMAIL=?";
+			pStmt = con.prepareStatement(sql);
+			pStmt.setString(1, String.valueOf(points) );
+			pStmt.setString(2, email);
+			
+			i = pStmt.executeUpdate();
+			if(i>0)
+			{
+				System.out.println("points updated");
+			}
+			else {
+				System.out.println("points didn't updated");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public String existinguser(User user) 
 	{	
 		String existingemail = "";

@@ -1,3 +1,4 @@
+<%@page import="singh.navjot.db.JDBCHelper"%>
 <%@page import="org.omg.CORBA.Request"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
@@ -16,12 +17,12 @@
 		ArrayList<String> alprice=new ArrayList<String>();
 		ArrayList<String> alquantity=new ArrayList<String>();
 		int rowcount;
-		String user;
+		String useremail;
 	%>
 		
 	<%
 		rowcount = Integer.valueOf(request.getParameter("frowcount"));
-		user = request.getParameter("fuser");		
+		useremail = request.getParameter("fuser");		
 	
 		for(int i=1; i<=rowcount; i++){
 			alitem.add( request.getParameter("fitem"+i) ); 
@@ -34,6 +35,11 @@
 		for(int i=1; i<=rowcount; i++){
 			alquantity.add( request.getParameter("fquantity"+i) ); 
 		}
+		
+		JDBCHelper helper = new JDBCHelper();
+		helper.openConnection();
+		helper.incrementpoints(useremail);
+		helper.closeConnection();
 	%>
 	
 	
