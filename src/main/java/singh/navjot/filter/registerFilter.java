@@ -72,7 +72,7 @@ public class registerFilter implements Filter {
 			    rd=request.getRequestDispatcher("navbar.jsp");
 			    rd.include(request, response);
 			    
-			    rd=request.getRequestDispatcher("validation.jsp");
+			    rd=request.getRequestDispatcher("existuser.jsp");
 			    rd.include(request, response);
 			    
 			    rd=request.getRequestDispatcher("register.jsp");

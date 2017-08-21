@@ -1,7 +1,7 @@
 
 	
 <!-- register -->
-	<div id="register" class="row jumbotron align-items-center" style="height:580px; margin-top: -30px;">
+	<div id="register" class="row jumbotron align-items-center" style="height:580px; margin-top: -30px; background-color:#D8BCBC;">
 			<div class="col-md-8">
 				<p class="lead" style="font-size: 38px;">Come be a part of this service</p>
 			</div>

@@ -1,6 +1,6 @@
 
 	<!-- about -->
-		<div id="about" class="jumbotron" style="height:580px; background-image:url(images/lightgreen.jpg); margin-top: -30px;">
+		<div id="about" class="jumbotron" style="height:580px;  background-image:url(images/lightgreen.jpg); margin-top: -30px;">
 				
 				<br/><br/>
 				
