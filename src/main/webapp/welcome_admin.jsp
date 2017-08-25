@@ -24,6 +24,7 @@
 
 <div class="container">	
 	<h1>Welcome <%=name %></h1>
+	<br/><br/>
 	<form id="bill_form" action="bill.jsp">
 		<input id="frowcount" name="frowcount" type="number" hidden />
 		<h3>Users:</h3>
@@ -48,7 +49,7 @@
 			</table>
 			<br/>
 			<input class="btn btn-primary" type="button" onclick="addrow()" value="ADD" />
-			<input class="btn btn-primary" type="submit" value="Generate Bill" />
+			<input class="btn btn-success" type="submit" value="Generate Bill" />
 	</form>
 	<br/><br/><br/>
 	<form action="logout" method="post">

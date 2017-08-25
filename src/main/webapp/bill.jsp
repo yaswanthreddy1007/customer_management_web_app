@@ -1,3 +1,9 @@
+
+<%@page import="java.io.ByteArrayOutputStream"%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="singh.navjot.pdf.PDFHelper"%>
 <%@page import="singh.navjot.db.JDBCHelper"%>
 <%@page import="org.omg.CORBA.Request"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -22,7 +28,8 @@
 		
 	<%
 		rowcount = Integer.valueOf(request.getParameter("frowcount"));
-		useremail = request.getParameter("fuser");		
+	
+		useremail = request.getParameter("fuser");	
 	
 		for(int i=1; i<=rowcount; i++){
 			alitem.add( request.getParameter("fitem"+i) ); 
@@ -40,6 +47,40 @@
 		helper.openConnection();
 		helper.incrementpoints(useremail);
 		helper.closeConnection();
+	%>
+	
+	<%
+	int a=Integer.valueOf(alprice.get(0)) * Integer.valueOf(alquantity.get(0));
+	
+		PDFHelper pdfh = new PDFHelper();
+		String dest = pdfh.initialisepdf(useremail);
+	
+		pdfh.createtable(rowcount, 6, alitem, alprice, alquantity);
+		
+		pdfh.closepdf();
+	%>
+	
+	<%
+//		response.setContentType("application/pdf");
+		
+		
+//	response.setHeader("Content-Disposition", "inline; filename=\"" + dest + "\"");
+
+//		response.setHeader("Content-Disposition", "inline; filename=" + dest + ";");
+//		FileOutputStream fileOut = new FileOutputStream(dest);
+
+
+	
+//		fileOut.close();
+//		out.close();
+
+	/*	response.setContentType("application/pdf");
+			  String filepath = "E:/lucky-I.T/JAVA Advanced/Eclipse_JEE_Workspace/customer_management_system/src/main/java/pdfoutputs/helloworld.pdf";
+			  response.setHeader("Content-Disposition", "inline; filename=’helloworld.pdf'");
+			  FileOutputStream fileout = new FileOutputStream(filepath);
+			  fileout.close();
+			  out.close();*/
+
 	%>
 	
 	
