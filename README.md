@@ -9,12 +9,15 @@ Employees can generate bills for customers in the form of pdf. while generating 
 ## Installing
 You will need to install a server like Tomcat.
 
-Create a database with name customer_db.
+Create a database with name 
+```
+customer_db
+```
 
 Import customer_db.sql in your database from database folder.
 
 ## Employee login details
-
+```
 Email: navjotsingh9633@gmail.com
-
 Password: 12345678
+```
