@@ -4,24 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <filter>
-  	<filter-name>billFilter</filter-name>
-  	<display-name>billFilter</display-name>
-  	<description></description>
-  	<filter-class>singh.navjot.filter.billFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>billFilter</filter-name>
-  	<url-pattern>/billFilter</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-  	<filter-name>billFilter</filter-name>
-  	<url-pattern>/bill</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-  	<filter-name>billFilter</filter-name>
-  	<servlet-name>logoutServlet</servlet-name>
-  </filter-mapping>
+  
   <servlet>
   	<servlet-name>itextservlet</servlet-name>
   	<display-name>itextservlet</display-name>
