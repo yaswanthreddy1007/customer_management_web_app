@@ -93,5 +93,17 @@
   </dependencies>
   <build>
     <finalName>customer_management_system</finalName>
+	  
   </build>
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<spring.version>5.1.2.RELEASE</spring.version>
+		<junit.version>4.11</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<sonar.host.url>http://172.31.36.13:9000/</sonar.host.url>
+		<sonar.login>squ_4ddacc4dae41be3c0e93aac2f57ba5929a288210</sonar.login>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+	</properties>
 </project>
