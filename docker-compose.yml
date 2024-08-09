@@ -1,0 +1,11 @@
+version: "3"
+networks:
+  gagana:
+    driver: bridge
+services:
+  customer:
+    image: yaswanthreddy1007/customerwebapp:TAG
+    ports:
+    - 1409:8080
+    networks:
+    - gagana
